@@ -1,0 +1,22 @@
+export const userData = [
+    {
+        username:'dinesh',
+        password:'12345'
+    },
+    {
+        username:'vishnu',
+        password:'12345'
+    },
+    {
+        username:'naveen',
+        password:'12345'
+    },
+    {
+        username:'kumar',
+        password:'12345'
+    },
+    {
+        username:'kavin',
+        password:'12345'
+    }
+];

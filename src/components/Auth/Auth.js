@@ -1,36 +1,16 @@
 import { useState,useContext } from "react";
 import UserContext from "../../utils/UserContext";
+import { userData } from "../../utils/constants";
 import "./Auth.scss"
 
-const userData = [
-    {
-        username:'dinesh',
-        password:'12345'
-    },
-    {
-        username:'vishnu',
-        password:'12345'
-    },
-    {
-        username:'naveen',
-        password:'12345'
-    },
-    {
-        username:'kumar',
-        password:'12345'
-    },
-    {
-        username:'kavin',
-        password:'12345'
-    }
-]
-
 const Auth = ()=>{
+    
     const {loggedIn, setLoggedIn} = useContext(UserContext);
+    
     if(localStorage.getItem('loggedIn')){
         setLoggedIn(true)
     }
-    const [credentials, setCredentials] = useState(
+    const [inputCredentials, setInputCredentials] = useState(
         {   username: '',
             password: ''
         }
@@ -42,40 +22,34 @@ const Auth = ()=>{
        
         setLoggedIn(true);
         localStorage.setItem('loggedIn',true);
+        setCredentialsMatch(true);
     }
 
     function handleLogin(){
         let localCredentials = JSON.parse(localStorage.getItem('credentials'))        
         
-        if(localCredentials.username === credentials.username && localCredentials.password === credentials.password)
+        if(localCredentials?.username === inputCredentials.username && localCredentials.password === inputCredentials.password)
         {
             
             setSuccess();
-            setCredentialsMatch(true);
-
-        }else if(userData.some(item=>item.username === credentials.username && item.password === credentials.password))
+            
+        }else if(userData.some(item=>item.username === inputCredentials.username && item.password === inputCredentials.password))
         {
             setSuccess();
-            setCredentialsMatch(true);
+            
         }
         else
         {
             setCredentialsMatch(false);           
         }
-        setCredentials(
-        {   username: '',
-            password: ''
-        })
+        setInputCredentials({ username: '',password: ''});
     }
+
     const handleRegister = ()=>{
-        if(credentials.username && credentials.password)
+        if(inputCredentials.username && inputCredentials.password)
         {   
-            localStorage.setItem('credentials', JSON.stringify(credentials));           
-            setLoggedIn(true);
-            setCredentials(
-                {   username: '',
-                    password: ''
-                })
+            localStorage.setItem('credentials', JSON.stringify(inputCredentials));           
+            setLoggedIn(true);           
         }
     }
     
@@ -88,22 +62,24 @@ const Auth = ()=>{
                 <input 
                     type="text"
                     placeholder="username"
-                    value={credentials.username}
-                    onChange={(e)=>setCredentials({...credentials,username:e.target.value})}
+                    value={inputCredentials.username}
+                    onChange={(e)=>setInputCredentials({...inputCredentials,username:e.target.value})}
                     className="lInput"
                 />
                 <input
                     type="password"
                     placeholder="password"
-                    value={credentials.password}
-                    onChange={(e)=>setCredentials({...credentials,password:e.target.value})}
+                    value={inputCredentials.password}
+                    onChange={(e)=>setInputCredentials({...inputCredentials,password:e.target.value})}
                     className="lInput"
                 />
                                 
                 <button className="lButtonlogin" onClick={handleLogin}>Log in</button>
                 
-                {!credentialsMatch && <span>Please enter the correct credentials</span>}                
+                {!credentialsMatch && <span>Please enter the correct credentials</span>}  
+
                 <span>New to the store? Register</span>
+
                 <button className="lButtonRegister" onClick={handleRegister}> Register</button>
             </div>
         </div>

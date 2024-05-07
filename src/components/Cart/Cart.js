@@ -3,9 +3,9 @@ import Product from "../Products/Product";
 
 const Cart = () => {
 
-  const cartValue = useSelector(store => store.cart.items)
-  console.log(cartValue);
-
+  const cartValuePresent = useSelector(store => store.cart.items);
+  const cartValue = (cartValuePresent.length === 0)? JSON.parse(localStorage.getItem('cartItems')):cartValuePresent;
+  
   return (
     <div>
     {

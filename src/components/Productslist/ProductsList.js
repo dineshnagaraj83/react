@@ -9,8 +9,8 @@ import { useSelector } from "react-redux";
 
 const ProductsList = ()=>{
     const {type} = useParams();   
-    const[productList,setProductList] = useState([])    
-    const data_list = data();     
+    const data_list = data();  
+    const[productList,setProductList] = useState([])       
     const[filterRating,setFilterRating] = useState(1);
     const[sort, setSort] = useState('def');
     const productPerPage = 2;
@@ -48,7 +48,7 @@ const ProductsList = ()=>{
     const currentProducts = productList?.slice(firstIndex,LastIndex);   
     
     const cartValue = useSelector((store) => store.cart.items)
-    console.log(currentProducts)
+    
    
     return (
         <div className="productList">
