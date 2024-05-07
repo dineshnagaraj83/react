@@ -23,10 +23,10 @@ const ProductInfo = ()=> {
 
    useEffect(
       ()=>{
-         console.log("PI",cartState)
+         
       
       return ()=>{
-         //console.log("PIreturn",cartState)
+         localStorage.setItem('cartItems', JSON.stringify(cartState))
       
       }         
    }      

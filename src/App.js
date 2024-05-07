@@ -8,7 +8,7 @@ import UserContext from "./utils/UserContext";
 import { useEffect, useState } from "react";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
-import Cart from "./components/Cart/cart";
+import Cart from "./components/Cart/Cart";
 
 
 

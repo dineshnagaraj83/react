@@ -4,11 +4,15 @@ import Product from "../Products/Product";
 const Cart = () => {
 
   const cartValue = useSelector(store => store.cart.items)
-  console.log('cartValue')
+  console.log(cartValue);
 
   return (
     <div>
-    <h1>Cart</h1>
+    {
+      cartValue.map(
+        (item)=> <Product data={item} key={item.id} />
+      )
+    }
     </div>
   )
 }
