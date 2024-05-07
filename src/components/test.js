@@ -14,7 +14,7 @@ const Login = ({ onLogin }) => {
       alert('Please enter username and password.');
     }
   };
-
+  
   return (
     <div>
       <h2>Login</h2>
