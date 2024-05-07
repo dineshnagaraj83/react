@@ -1,0 +1,30 @@
+.productList{
+   margin-left: 200px; 
+   display: flex;     
+}
+
+.selection{
+  display: flex;
+  justify-content: center;
+  margin-left: 300px;
+  position: fixed;
+}
+
+.filter{
+   margin-left: 30px
+}
+.sort{
+   margin-left: 30px
+}
+
+.products{
+   width: 200px;
+   margin: 20px; 
+   padding: 20px;    
+}
+
+.image{
+   width: 200px;
+   height: 200px;
+   
+}
