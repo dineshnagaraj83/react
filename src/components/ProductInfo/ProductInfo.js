@@ -1,11 +1,12 @@
 import data from "../../utils/data"
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import "./ProductInfo.scss"
 import { useDispatch,useSelector } from "react-redux";
 import { addItem,removeItem } from "../../utils/cartSlice";
 import { useEffect, useState } from "react";
 
 const ProductInfo = ()=> {
+
    const {id} = useParams();
    const[addedCart,setAddedCart] = useState(false);
    const data_info = data();   
@@ -36,6 +37,10 @@ const ProductInfo = ()=> {
    if(data_info === null) return(<h1>Loading</h1>);
 
    return(
+   <div>
+      <Link to='/cart'>
+      <button className="button">Go to Cart({cartState.length})</button>
+      </Link>
     <div className="productInfo">
       <img className="image" src={item.image} />
       <div className="productDetails">
@@ -47,6 +52,7 @@ const ProductInfo = ()=> {
             <button className="button" onClick={addtoCart} >{(!addedCart)?"Add to Cart":"Added"}</button>
          </div>      
       </div>
+    </div>
     </div>
    )
 }
